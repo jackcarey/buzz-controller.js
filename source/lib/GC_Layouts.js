@@ -34,7 +34,15 @@ const GC_Layouts = {
         name = name.toLowerCase();
         return name in Controller.layouts.list;
     },
-
+    has_inexact: function has_inexact(name) {
+        name = name.toLowerCase();
+        for (let layout in Controller.layouts.list) {
+            if ("inexact_match " in layout && layout.inexact_match.toLowerCase().indexOf(name) >= 0) {
+                return true;
+            }
+        }
+        return false;
+    },
     get: function(name) {
         name = name.toLowerCase();
         return Controller.layouts.list[name];

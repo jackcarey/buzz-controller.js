@@ -57,13 +57,13 @@ module.exports = function(grunt) {
             site: ['tester', 'index.html', 'favicon.ico', 'safari-pinned-icon.svg']
         },
 
-        jshint: {
-            src: ['gruntfile.js', 'source/**/*.js'],
-            options: {
-                validthis: true,
-                esversion: 6
-            }
-        },
+        // jshint: {
+        //     src: ['gruntfile.js', 'source/**/*.js'],
+        //     options: {
+        //         validthis: true,
+        //         esversion: 6
+        //     }
+        // },
 
         compress: {
             build: {
@@ -159,11 +159,11 @@ module.exports = function(grunt) {
     // --- Library
 
     // JSHint
-    grunt.registerTask('hint', ['jshint']);
+    // grunt.registerTask('hint', ['jshint']);
 
     // Builds everything
     grunt.registerTask('build', [
-        'jshint',
+        // 'jshint',
         'clean:all',
         'uglify:build_min',
         'uglify:build_full',
@@ -174,10 +174,13 @@ module.exports = function(grunt) {
     ]);
 
     // Builds only Controller.js
-    grunt.registerTask('only_main', ['jshint', 'clean:main', 'uglify:build_min', 'uglify:build_full', 'babel:build_min', 'babel:build_full']);
+    // grunt.registerTask('only_main', ['jshint', 'clean:main', 'uglify:build_min', 'uglify:build_full', 'babel:build_min', 'babel:build_full']);
+    grunt.registerTask('only_main', ['clean:main', 'uglify:build_min', 'uglify:build_full', 'babel:build_min', 'babel:build_full']);
+
 
     // Builds only Controller.layouts.js
-    grunt.registerTask('only_layouts', ['jshint', 'clean:layouts', 'uglify:build_min_layouts', 'uglify:build_full_layouts', 'babel:build_min_layouts', 'babel:build_full_layouts']);
+    // grunt.registerTask('only_layouts', ['jshint', 'clean:layouts', 'uglify:build_min_layouts', 'uglify:build_full_layouts', 'babel:build_min_layouts', 'babel:build_full_layouts']);
+    grunt.registerTask('only_layouts', ['clean:layouts', 'uglify:build_min_layouts', 'uglify:build_full_layouts', 'babel:build_min_layouts', 'babel:build_full_layouts']);
 
 
     // --- Test Site

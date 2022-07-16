@@ -4,7 +4,7 @@ Modified from [Controller.js 1.0.2](https://github.com/jackcarey/buzz-controller
 
 *A library designed to make the Gamepad API easier to use for non-gaming applications.*
 
-→ **[Controller.js documentation](https://github.com/jackcarey/buzz-controller.js/wiki)**  
+→ **[Documentation](https://github.com/jackcarey/buzz-controller.js/wiki)**  
 <!-- → **[Try it out now](https://samiare.github.io/Controller.js)**   -->
 
 ## Features
@@ -16,8 +16,8 @@ Modified from [Controller.js 1.0.2](https://github.com/jackcarey/buzz-controller
 ## Quick Start
 
 1. Download the [lastest build](https://github.com/jackcarey/buzz-controller.js/releases/latest).
-2. Unpack the ZIP file and copy the library and (optionally) the layouts add-on to your project files.
-3. Include the library and layouts add-on just before your closing `<body>` tag:
+2. Unpack the ZIP file and copy the library, layouts add-on, and Buzz controller to your project files.
+3. Include them before your closing `<body>` tag:
 
     ```html
     <script src="path/to/Controller.min.js"></script>

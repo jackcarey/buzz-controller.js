@@ -144,9 +144,9 @@ function Controller(HTMLgamepad) {
     function initControllerMapping() {
 
         let layout = {};
-
         // Get the correct mapping layout, if available
-        if (this.constructor.layouts.has(this.name)) {
+        // or an inexact one if allowable
+        if (this.constructor.layouts.has(this.name)|| this.constructor.layouts.has_inexact(this.name)) {
             unknownLayout = false;
             layout = this.constructor.layouts.get(this.name);
         } else if (gamepad.mapping === 'standard') {

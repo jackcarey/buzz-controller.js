@@ -1,6 +1,6 @@
 (function () {
     var buzz = {
-        match: "Logitech Buzz(tm) Controller V1 (Vendor: 054c Product: 0002)",
+        match: "Logitech Buzz(tm) Controller V1",
         inexact_match: "Buzz",
         name: "Buzz Quiz Controller for PS2",
         description: "A wired USB PS2 Buzz controller.",
