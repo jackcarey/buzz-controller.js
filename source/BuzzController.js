@@ -4,45 +4,20 @@
 var BuzzController = Controller;
 const hid_supported = "hid" in window.navigator;
 
-Object.defineProperty(BuzzController, "light_state", {
-    get: function () {
-        return this._light_state;
-    },
-    set: function (newData) {
-        this._light_state = newData % 15;
-        setLights.bind(this);
-        setLights(this._light_state);
-    }
-});
-
 Object.defineProperty(BuzzController, "lights", {
     get: function () {
-        return this._light_state;
+        return this._lights;
     },
     set: function (newData) {
-        //TODO HID setup
-        let data_type = ""+ typeof newData;
-        this._light_mode = data_type;
-        switch(data_type) {
-            case "boolean":
-                //all on or all off
-                this.light_state = newData ? 15 : 0;
-                break;
-            case "number":
-                //set based on the 4 binary columns
-                this.light_state = newData;
-                break;
-            case "object": // assumes array
-                //TODO: handle sequence array
-                break;
-            case "function":
-                //TODO: handle transform function
-                break;
+        //if newData is negative, wrap it round from the maxiumum
+        if (newData <= 0) {
+            newData = 15 + newData;
         }
+        this._lights = newData % 15;
+        setLights.bind(this);
+        setLights(this._lights);
     }
 });
-
-console.log("B", Object.getOwnPropertyNames(BuzzController));
 
 async function runHIDSetup() {
     if (hid_supported) {
@@ -72,7 +47,7 @@ async function runHIDSetup() {
                 await this.hid_device.open();
             }
         }
-    }else{
+    } else {
         console.log("not supported!");
     }
 }
