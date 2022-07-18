@@ -5,7 +5,7 @@ Modified from [Controller.js 1.0.2](https://github.com/jackcarey/buzz-controller
 *A library designed to make the Gamepad API easier to use for non-gaming applications.*
 
 → **[Documentation](https://github.com/jackcarey/buzz-controller.js/wiki)**  
-→ **[Try it out now](https://jackcarey.github.io/buzz-controller.js/)**  
+→ **[Try it out now](https://jackcarey.github.io/buzz-controller.js/tester/)**  
 
 ## Features
 
@@ -42,5 +42,3 @@ For up-to-date information on the status of the Gamepad API in browsers, check [
 ---
 
 The MIT License (MIT)
-
-Copyright © 2016 [Samir Zahran](http://samiare.net)
