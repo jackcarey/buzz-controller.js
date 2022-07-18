@@ -1,6 +1,6 @@
 # BuzzController.js  
 
-Modified from [Controller.js 1.0.2](https://github.com/jackcarey/buzz-controller.js)) to add support for Buzz quiz controller layout and lights.
+Modified from [Controller.js 1.0.2](https://github.com/jackcarey/buzz-controller.js) to add support for Buzz quiz controller layout and lights.
 
 *A library designed to make the Gamepad API easier to use for non-gaming applications.*
 
