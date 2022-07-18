@@ -11,16 +11,24 @@ Object.defineProperty(BuzzController, "lights", {
     set: function (newData) {
         //if newData is negative, wrap it round from the maxiumum
         if (newData <= 0) {
-            newData = 15 + newData;
+            newData = 16 + newData;
         }
-        this._lights = newData % 15;
+        this._lights = newData % 16;
         setLights.bind(this);
         setLights(this._lights);
     }
 });
 
+Object.defineProperty(BuzzController, "lights_supported", {
+    get: function () {
+        let hw_supported = Controller.supported && hid_supported;
+        return hw_supported;
+    }
+});
+
 async function runHIDSetup() {
-    if (hid_supported) {
+    if (hid_supported && !this.getting_hid) {
+        this.getting_hid = true;
         let hid_gamepads = await navigator.hid.getDevices();
         if (hid_gamepads.length == 0) {
             hid_gamepads = await navigator.hid.requestDevice({
@@ -47,6 +55,7 @@ async function runHIDSetup() {
                 await this.hid_device.open();
             }
         }
+        this.getting_hid = false;
     } else {
         console.log("not supported!");
     }
@@ -63,12 +72,13 @@ async function setLights(state) {
         console.error("No HID device to send light states to.");
         return;
     }
-    state %= 15;
+    state %= 16;
+    // console.log("bin mod", state, (state >>> 0).toString(2).padStart(4, 0));
     //convert the decimal coerced number back to binary digits
     let binVal = (state >>> 0).toString(2).padStart(4, 0);
     let arr = [0]; //padding of one unit
     for (let digit of binVal) {
-        arr.push(digit);
+        arr.push(parseInt(digit));
     }
     this.hid_device.sendReport(0, Uint8Array.from(arr));
 }
