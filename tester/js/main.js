@@ -35,7 +35,7 @@ window.addEventListener('load', function () {
             clearInterval(lightInterval);
             lightInterval = null;
         };
-        let presetMs = 280;
+        const getMsInput = ()=>{return Math.max(10,Math.min(10000,this.document.getElementById("presetMs").value));}
         let presets = {
             "none": resetInterval,
             "random": () => {
@@ -45,7 +45,7 @@ window.addEventListener('load', function () {
                     arr.fill(0);
                     arr = arr.map(val => Math.random() < 0.5 ? 1 : 0);
                     setLightFromArr(arr);
-                }, presetMs);
+                }, getMsInput());
             },
             "flash": () => {
                 resetInterval();
@@ -55,7 +55,7 @@ window.addEventListener('load', function () {
                     arr.fill(state ? 1 : 0);
                     setLightFromArr(arr);
                     state = !state;
-                }, presetMs);
+                }, getMsInput());
             },
             "walk": () => {
                 resetInterval();
@@ -67,7 +67,7 @@ window.addEventListener('load', function () {
                     idx += 1;
                     idx %= 4;
                     setLightFromArr(arr);
-                }, presetMs);
+                }, getMsInput());
             },
         };
         let presetSelect = this.document.getElementById("light-presets");
